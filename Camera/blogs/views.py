@@ -33,7 +33,7 @@ def addregister(request):
     Password = request.POST['password']
     RePassword = request.POST['confirm_password']
     para_register = [StudentID,FirstName,LastName,Number,Password]
-    print("llllllllllllllllllllllllllllllllllllll")
+    print("llllllllllllllllllllllllllllllllllllll222")
     print( para_register)
     
     if not api.get_data_sql('user_info', "ID", StudentID):
