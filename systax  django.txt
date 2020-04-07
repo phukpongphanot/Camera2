@@ -1,0 +1,6 @@
+pip install mysqlclient // เมื่อ setting mysql เข้ามาแล้ว ต้องติดตั้ง
+python manage makemigrations // คือการสร้าง migration หรือ ตารางที่เราออกแบบ
+python manage mirgate //คือการอัพตรางขึ้น datacase
+python manage.py createsuperuser // คือการใส่ข้อมูลส่วนของ admin ตั้งรหัสต่างๆ ยกตัวอย่าง (  python manage.py createsuperuser --username=phukpongphanot --email=phukpongphanot2543@gmail.com ) และจะมีให้ใส่ passwork 
+
+intial commit //คือการ update เข้า github (ใชช่องค้นหา)

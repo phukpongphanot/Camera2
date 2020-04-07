@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <title>THE CAIMAN : Enjoy & Have a bright day!</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        * {box-sizing: border-box;}
+        body {margin: 0;}
+
+        @font-face{
+            src: url(fonts/SukhumvitSet-Bold.ttf);
+            font-family:sb;}
+        @font-face{
+            src: url(fonts/SukhumvitSet-SemiBold.ttf);
+            font-family:ssb;}
+        @font-face{
+            src: url(fonts/SukhumvitSet-Light.ttf);
+            font-family:sl;}
+        @font-face{
+            src: url(fonts/SukhumvitSet-Medium.ttf);
+            font-family:sm;}
+        @font-face{
+            src: url(fonts/SukhumvitSet-Text.ttf);
+            font-family:st;}
+        @font-face{
+            src: url(fonts/SukhumvitSet-Thin.ttf);
+            font-family:sth;}
+
+        body{
+            transform: translate(-50%, -50%);
+            margin: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            background-image: url( "{% static 'img/bg.png' %}");
+            background-repeat:no-repeat;
+            background-size: cover;
+            background-position: center top;
+            background-attachment: fixed;
+            background-color:rgb(128, 128, 128,0.6);
+            background-blend-mode: lighten;}
+        #box {
+            border-radius: 0px 0px 25px 25px;
+            background: rgb(230, 230, 230);
+            margin-top: -2.5vw;
+            padding-top: 0; 
+            padding-bottom: 3%;
+            width: 100%;} 
+        .text{
+            font-family:sm;
+            font-size:1.5vw;
+            margin-left: 15%;
+            margin-right: auto;
+            margin-top: -2.5vw;}
+        .text1{
+            text-align:center;
+            text-decoration: underline;
+            text-underline-position: under;
+            font-family:sb;
+            font-size:4vw;
+            letter-spacing: 0.5vw;
+            margin-top: 1vw;}
+        .text2{
+            color: #cc3333;
+            text-align:center;
+            font-family:sl;
+            font-size:1.5vw;
+            margin-top: -2vw;}
+        .text3{
+            text-align: center;
+            position: absolute;
+            margin-bottom:0;
+            top:110%;
+            width: 100%;
+            overflow: hidden;
+            color:white;
+            font-family:sl;
+            font-size:1vw;
+            padding-bottom: 0;}
+        .imgsize1{
+            width:9%;
+            display: block;
+            margin-top: 0;
+            margin-left: 5%;
+            margin-right: auto;}
+        .imgsize2{
+            width:100%;
+            display: block;
+            margin-top: -6vw;
+            margin-left: auto;
+            margin-right: auto;}
+        .imgsize3{
+            width:30%;
+            display: block;
+            margin-top: 5%;
+            margin-left: auto;
+            margin-right: auto;}
+        .imgsize4{
+            display: none;}
+        @media screen and (min-width:700px) and (max-width : 1024px) and (orientation : portrait) { 
+            body{
+            transform: translate(-10%, -50%);
+            margin: 0;
+            position: absolute;
+            top: 50%;
+            left: 18%;
+            background-image: url("bg_phone.png");
+            background-repeat:no-repeat;
+            background-size: auto 100%;
+            background-position: center top;
+            background-attachment: fixed;
+            background-color:rgb(128, 128, 128,0.6);
+            background-blend-mode: lighten;}
+        #box {
+            border-radius: 0 0 25px 25px;
+            background: rgb(230, 230, 230);
+            padding-top: 10%; 
+            width: 100%;} 
+        .text{
+            font-family:sm;
+            font-size:3.5vw;
+            margin-left: 23%;
+            margin-right: auto;
+            margin-top: -7vw;}
+        .text1{
+            text-align:center;
+            font-family:sb;
+            font-size:10vw;
+            text-decoration: underline;
+            text-underline-position: under;
+            letter-spacing: 0.5vw;
+            margin-top: 1vw;}
+        .text2{
+            color: #cc3333;
+            text-align:center;
+            font-family:sl;
+            font-size:5vw;
+            margin-top: -5vw;}
+        .text3{
+           display: none;}
+        .imgsize1{
+            width:16%;
+            display: block;
+            margin-top: -15%;
+            margin-left: 5%;
+            margin-right: auto;}
+        .imgsize2{
+            display: none;}
+        .imgsize4{
+            width:100%;
+            display: block;
+            margin-top: -15%;
+            margin-bottom: auto;
+            margin-left: auto;
+            margin-right: auto;}
+        .imgsize3{
+            width:50%;
+            display: block;
+            margin-top: 8%;
+            margin-left: auto;
+            margin-right: auto;}}
+        @media screen and (min-width:700px) and (max-width : 1024px) and (orientation : landscape) {
+            body{
+            transform: translate(-50%, -50%);
+            margin: 0;
+            position: absolute;
+            top: 45%;
+            left: 50%;
+            background-image: url("bg.png");
+            background-repeat:no-repeat;
+            background-size: cover;
+            background-position: center top;
+            background-attachment: fixed;
+            background-color:rgb(128, 128, 128,0.6);
+            background-blend-mode: lighten;}
+        #box {
+            border-radius: 0px 0px 25px 25px;
+            background: rgb(230, 230, 230);
+            margin-top: -2.5vw;
+            padding-top: 0; 
+            padding-bottom: 3%;
+            width: 100%;} 
+        .text{
+            font-family:sm;
+            font-size:1.5vw;
+            margin-left: 15%;
+            margin-right: auto;
+            margin-top: -2.5vw;}
+        .text1{
+            text-align:center;
+            text-decoration: underline;
+            text-underline-position: under;
+            font-family:sb;
+            font-size:4vw;
+            letter-spacing: 0.5vw;
+            margin-top: 1vw;}
+        .text2{
+            color: #cc3333;
+            text-align:center;
+            font-family:sl;
+            font-size:1.5vw;
+            margin-top: -2vw;}
+        .text3{
+            text-align: center;
+            position: absolute;
+            margin-bottom:0;
+            top:110%;
+            width: 100%;
+            overflow: hidden;
+            color:white;
+            font-family:sl;
+            font-size:1vw;
+            padding-bottom: 0;}
+        .imgsize1{
+            width:9%;
+            display: block;
+            margin-top: 0;
+            margin-left: 5%;
+            margin-right: auto;}
+        .imgsize2{
+            width:100%;
+            display: block;
+            margin-top: -6vw;
+            margin-left: auto;
+            margin-right: auto;}
+        .imgsize3{
+            width:30%;
+            display: block;
+            margin-top: 5%;
+            margin-left: auto;
+            margin-right: auto;}
+        .imgsize4{
+            display: none;}}
+        @media screen and (max-width: 600px) { 
+        body{
+            transform: translate(-10%, -50%);
+            margin: 0;
+            position: absolute;
+            top: 50%;
+            left: 18%;
+            background-image: url("bg_phone.png");
+            background-repeat:no-repeat;
+            background-size: auto 100%;
+            background-position: center top;
+            background-attachment: fixed;
+            background-color:rgb(128, 128, 128,0.6);
+            background-blend-mode: lighten;}
+        #box {
+            border-radius: 0 0 25px 25px;
+            background: rgb(230, 230, 230);
+            padding-top: 10%; 
+            width: 100%;} 
+        .text{
+            font-family:sm;
+            font-size:3.5vw;
+            margin-left: 23%;
+            margin-right: auto;
+            margin-top: -7vw;}
+        .text1{
+            text-align:center;
+            font-family:sb;
+            font-size:10vw;
+            text-decoration: underline;
+            text-underline-position: under;
+            letter-spacing: 0.5vw;
+            margin-top: 1vw;}
+        .text2{
+            color: #cc3333;
+            text-align:center;
+            font-family:sl;
+            font-size:5vw;
+            margin-top: -5vw;}
+        .text3{
+           display: none;}
+        .imgsize1{
+            width:16%;
+            display: block;
+            margin-top: -15%;
+            margin-left: 5%;
+            margin-right: auto;}
+        .imgsize2{
+            display: none;}
+        .imgsize4{
+            width:100%;
+            display: block;
+            margin-top: -30%;
+            margin-bottom: auto;
+            margin-left: auto;
+            margin-right: auto;}
+        .imgsize3{
+            width:50%;
+            display: block;
+            margin-top: 8%;
+            margin-left: auto;
+            margin-right: auto;}}
+    </style>
+</head>
+<body>
+    <img src="{% static "img/b_long1.png"%}" class="imgsize2"  />
+    <img src="{% static "img/b_long2.png"%}" class="imgsize4"  />
+    <div id="box">
+       
+        <img src="{% static "img/b_logo.png"%}" class="imgsize1"  />
+        <p class="text">ยืมกล้อง : BORROW THE CAMERA</p>
+        
+        <img src="{% static "img/Pin-01.png"%}" class="imgsize3"  />
+        <p id="random" class="text1"></p>
+        <font size="8"><h3 align = 'center'> {{random}}</h3> </font>
+            <!-- <script>
+                // var y = Math.floor(Math.random()*10).toString()+" "+Math.floor(Math.random()*10).toString()+" "+Math.floor(Math.random()*10).toString()+" "+Math.floor(Math.random()*10).toString()+" "+Math.floor(Math.random()*10).toString()+" "+Math.floor(Math.random()*10).toString();
+                document.getElementById("random").innerHTML = y;
+            </script> -->
+         <p id="x" class="text2"></p>
+         <script>
+             var x = "xxxxxxxxxxxxxxxxxxxxxxx";
+             document.getElementById("x").innerHTML = x;
+         </script>
+        <p class="text3">@THE CAIMAN : BORROW AND RETURN CAMERA SYSTEM FOR FIBO</p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,12 @@
+{% extends 'layout.html' %}   <!--คือเหมือนกับการ import เข้ามา-->
+
+{% block content %}
+    <br><br><br><br>
+    <center><b><p style="font-size:150px;">รหัสยืนยัน</p></b></center>
+    <form action="action_page.php">
+        รหัส 6 หลัก: <p style="font-size:100px;"><input type="text" name="user"></p>
+        <input type="Submit" value="ยืนยัน" class="btn btn-primary">
+      </form>
+
+
+{% endblock %}

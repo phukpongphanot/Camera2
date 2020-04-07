@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <title>THE CAIMAN : register</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    {% for message in messages %}
+    <div class="alert alert-danger" role="alert">    <!--Alert (พื้นหลังแดง)-->
+        {{message}}
+    </div>
+    
+{% endfor %}
+
+    <script>
+        function validateForm() {
+            var x = document.forms["form"]["password"].value;
+            var y = document.forms["form"]["confirm_password"].value;
+            if (x != y){
+                alert("Please,try again.");
+                return false;}}  
+    </script>
+    
+    <style>
+        @font-face{
+            src: url(fonts/SukhumvitSet-Bold.ttf);
+            font-family:sb;}
+        @font-face{
+            src: url(fonts/SukhumvitSet-SemiBold.ttf);
+            font-family:ssb;}
+        @font-face{
+            src: url(fonts/SukhumvitSet-Light.ttf);
+            font-family:sl;}
+        @font-face{
+            src: url(fonts/SukhumvitSet-Medium.ttf);
+            font-family:sm;}
+        @font-face{
+            src: url(fonts/SukhumvitSet-Text.ttf);
+            font-family:st;}
+        @font-face{
+            src: url(fonts/SukhumvitSet-Thin.ttf);
+            font-family:sth;}  
+        
+        body{
+            margin: 0;
+            background-image: url( "{% static 'img/bg.png' %}");
+            background-repeat:no-repeat;
+            background-size: cover;
+            background-position: center top;
+            background-attachment: fixed;}   
+        .column1{
+            flex: 1;
+            margin-top: 5%;
+            width: 41%;
+            padding-left: 5%;
+            padding-bottom: 3%;
+            float: left;
+            background-color:rgb(128, 128, 128,0.6);
+            background-blend-mode: lighten;}
+        .column2{
+            flex: 1;
+            margin-top: 5%;
+            width: 27%;
+            padding-top: 7%;
+            padding-bottom: 3%;
+            float: left;
+            background-color:rgb(128, 128, 128,0.6);
+            background-blend-mode: lighten;}
+        .column3{
+            flex: 1;
+            margin-top: 5%;
+            width: 27%;
+            padding-top: 7%;
+            padding-bottom: 3%;
+            float: left;
+            background-color:rgb(128, 128, 128,0.6);
+            background-blend-mode: lighten;}
+        .title{
+            color:white;
+            text-align:center;
+            font-family:ssb;
+            font-size:4vw;
+            letter-spacing: 0.5vw;
+            margin-top: 3%;
+            margin-bottom: 0;}
+        .long{
+            box-sizing: border-box;
+            width: 97%;
+            border: 0.3px solid #ccc;
+            border-radius: 0.4vw;
+            background-color: white;
+            display: block;
+            margin-top: 1vw;
+            margin-left: auto;
+            margin-right: auto;
+            font-family:sm;
+            font-size: 1.2vw;
+            text-align: center;}
+        .short{
+            box-sizing: border-box;
+            width: 47.5%;
+            border: 0.2px solid #ccc;
+            border-radius: 0.4vw;
+            background-color: white;
+            font-family:sm;
+            font-size: 1.2vw;
+            text-align: center;
+            margin-top: 1vw;
+            margin-bottom: 1vw;
+            margin-left: 0.5vw;
+            margin-right:0vw}
+        .cen{
+            margin-left: 0.1vw;
+            margin-top: 1vw;
+            margin-bottom: 0;}
+        .text{
+            color:white;
+            text-align: right;
+            margin-top: -0.3vw;
+            margin-right: 1.2%;
+            font-family:ssb;
+            font-size: 1.2vw;}
+        input[type=submit] {
+            background-color: #99cc33;
+            border:none;
+            border-radius: 0.3vw;
+            font-family: ssb;
+            letter-spacing: 0.3vw;
+            font-size:1.2vw;
+            color: white;
+            padding: 2% 7%;
+            cursor: pointer;
+            display: block;
+            margin-top: 3vw;
+            margin-left: auto;
+            margin-right: auto;}
+        .desktop{
+            width:70%;
+            display: block;
+            margin-left: 25%;
+            margin-right: auto;
+            margin-top:auto;
+            margin-bottom: auto;}
+        .phone{
+            display: none;}
+        .row{
+            display: flex;
+            width: 100%;}
+        @media screen and (min-width:700px) and (max-width : 1024px) and (orientation : portrait) {
+            body{
+                margin: 0;
+                background-image: url("bg_phone.png");
+                background-repeat:no-repeat;
+                background-size: auto 150%;
+                background-attachment: scroll;}
+            .title{
+                color:white;
+                text-align:center;
+                font-family:sb;
+                font-size:4vw;
+                margin-top: 5%;}
+            .column3{
+                display: none;}
+            .column2{
+                display: none;}
+            .column1{
+                display: table;
+                margin-top: 10%;
+                margin-bottom: 10%;
+                width: 100%;
+                padding-bottom: 7%;
+                float: left;
+                background-color:rgb(128, 128, 128,0.6);
+                background-blend-mode: lighten;}
+            .long{
+                box-sizing: border-box;
+                width: 55%;
+                border: 0.4px solid #ccc;
+                border-radius: 0.8vw;
+                background-color: white;
+                display: block;
+                margin-top: 1vw;
+                margin-left: auto;
+                margin-right: auto;
+                font-family:sm;
+                font-size: 2vw;
+                text-align: center;}
+            .short{
+                box-sizing: border-box;
+                width: 29%;
+                border: 0.4px solid #ccc;
+                border-radius: 0.8vw;
+                background-color: white;
+                font-family:sm;
+                font-size: 2vw;
+                text-align: center;
+                margin-top: 1vw;
+                margin-left: 13.5vw;
+                margin-right:-12vw}
+            .desktop{
+                display: none;}
+            .phone{
+                width:15%;
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                margin-top:7%;
+                margin-bottom: 0vw;}
+            .cen{
+                margin-left: 9%;
+                margin-top: 2.5%;
+                margin-bottom: 3.5%;}
+            .text{
+                color:white;
+                text-align: right;
+                margin-top: -0.3vw;
+                margin-right: 10%;
+                font-family:st;
+                font-size: 1.5vw;}
+            input[type=submit] {
+                background-color: #99cc33;
+                border:none;
+                border-radius: 0.6vw;
+                font-family: ssb;
+                letter-spacing: 0.3vw;
+                font-size:2.5vw;
+                color: white;
+                padding: 2% 7%;
+                cursor: pointer;
+                display: block;
+                margin-top: 7vw;
+                margin-left: auto;
+                margin-right: auto;}
+            .row{
+                display: block;
+                width: 100%;}}
+        @media screen and (min-width:700px) and (max-width : 1024px) and (orientation : landscape) {
+            body{
+            margin: 0;
+            background-image: url("bg.png");
+            background-repeat:no-repeat;
+            background-size: cover;
+            background-position: center top;
+            background-attachment: fixed;}   
+        .column1{
+            flex: 2;
+            margin-top: 10%;
+            padding-left: 0;
+            padding-bottom: 3%;
+            float: left;
+            background-color:rgb(128, 128, 128,0.6);
+            background-blend-mode: lighten;}
+        .column2{
+            flex: 1;
+            margin-top: 10%;
+            padding-left: 7%;
+            padding-top: 7%;
+            padding-bottom: 3%;
+            float: left;
+            background-color:rgb(128, 128, 128,0.6);
+            background-blend-mode: lighten;}
+        .column3{
+            display: none;}
+        .title{
+            color:white;
+            margin-right: 25%;
+            font-family:ssb;
+            font-size:3.5vw;
+            letter-spacing: 0.5vw;
+            margin-top: 3%;
+            margin-bottom: 0;}
+        .long{
+            box-sizing: border-box;
+            width: 75%;
+            border: 0.3px solid #ccc;
+            border-radius: 0.4vw;
+            background-color: white;
+            display: block;
+            margin-top: 1vw;
+            margin-left: 0;
+            margin-right: auto;
+            font-family:sm;
+            font-size: 1vw;
+            text-align: center;}
+        .short{
+            box-sizing: border-box;
+            width: 36.5%;
+            border: 0.2px solid #ccc;
+            border-radius: 0.4vw;
+            background-color: white;
+            font-family:sm;
+            font-size: 1vw;
+            text-align: center;
+            margin-top: 1vw;
+            margin-bottom: 1vw;
+            margin-left: 0vw;
+            margin-right:0.65vw}
+        .cen{
+            margin-left: 0.1vw;
+            margin-top: 1vw;
+            margin-bottom: 0;}
+        .text{
+            color:white;
+            text-align: right;
+            margin-top: -0.3vw;
+            margin-right: 1.2%;
+            font-family:ssb;
+            font-size: 1.2vw;}
+        input[type=submit] {
+            background-color: #99cc33;
+            border:none;
+            border-radius: 0.3vw;
+            font-family: ssb;
+            letter-spacing: 0.3vw;
+            font-size:1.5vw;
+            color: white;
+            padding: 2% 7%;
+            cursor: pointer;
+            display: block;
+            margin-top: 3vw;
+            margin-right: 53.5%;}
+        .desktop{
+            width:70%;
+            display: block;
+            margin-left: 25%;
+            margin-right: auto;
+            margin-top:auto;
+            margin-bottom: auto;}
+        .phone{
+            display: none;}
+        .row{
+            display: flex;
+            width: 100%;}}
+        @media screen and (max-width: 600px) { 
+            body{
+                margin: 0;
+                background-image: url("bg_phone.png");
+                background-repeat:no-repeat;
+                background-size: auto 175%;
+                background-attachment: scroll;}
+            .title{
+                color:white;
+                text-align:center;
+                font-family:sb;
+                font-size:8vw;
+                margin-top: 3%;}
+            .column3{
+                display: none;}
+            .column2{
+                display: none;}
+            .column1{
+                display: table;
+                margin-top: 10%;
+                margin-bottom: 10%;
+                width: 100%;
+                padding-bottom: 7%;
+                float: left;
+                background-color:rgb(128, 128, 128,0.6);
+                background-blend-mode: lighten;}
+            .long{
+                box-sizing: border-box;
+                width: 80%;
+                border: 0.4px solid #ccc;
+                border-radius: 0.8vw;
+                background-color: white;
+                display: block;
+                margin-top: 1vw;
+                margin-left: auto;
+                margin-right: auto;
+                font-family:sm;
+                font-size: 4vw;
+                text-align: center;}
+            .short{
+                box-sizing: border-box;
+                width: 42.5%;
+                border: 0.4px solid #ccc;
+                border-radius: 0.8vw;
+                background-color: white;
+                font-family:sm;
+                font-size: 4vw;
+                text-align: center;
+                margin-top: 1vw;
+                margin-left: 1vw;
+                margin-right:1vw}
+            .desktop{
+                display: none;}
+            .phone{
+                width:20%;
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                margin-top:7%;
+                margin-bottom: 0vw;}
+            .cen{
+                margin-left: 9%;
+                margin-top: 2.5%;
+                margin-bottom: 3.5%;}
+            .text{
+                color:white;
+                text-align: right;
+                margin-top: -0.3vw;
+                margin-right: 10%;
+                font-family:st;
+                font-size: 2.5vw;}
+            input[type=submit] {
+                background-color: #99cc33;
+                border:none;
+                border-radius: 0.6vw;
+                font-family: ssb;
+                letter-spacing: 0.3vw;
+                font-size:4vw;
+                color: white;
+                padding: 2% 7%;
+                cursor: pointer;
+                display: block;
+                margin-top: 5vw;
+                margin-left: auto;
+                margin-right: auto;}
+            .row{
+                display: block;
+                width: 100%;}}
+        
+    </style>
+</head>
+<body>
+    <div class="row">
+        <div class="column2"><img src="{% static "img/logo.png"%}" class="desktop"  /></div>
+        
+        <div class="column1">
+            <!-- <img src="logo_small.png" class="phone"> -->
+            <img src="{% static "img/logo_small.png"%}" class="phone"  />
+            <h1 class="title">- REGISTER -</h1>
+            <form name = "form" action="addregister" method="post" onsubmit="return validateForm()">
+                {% csrf_token %}
+                <input type="text" name="id" id="id" class="long" placeholder="STUDENT ID." required>
+                <p class="cen"><input type="text" name="name" id="name" class="short" placeholder="NAME" required>
+                <input type="text" name="surname" id="surname" class="short" placeholder="SURNAME" required></p>
+                <input type="text" name="number" id="number" class="long" placeholder="NUMBER"  required><br>
+                <input type="password" name="password" id="password" class="long" placeholder="CREATE PASSWORD" required><br>
+                <input type="password" name="confirm_password" id="confirm_password" class="long" placeholder="CONFIRM PASSWORD" onkeyup="myFunction()" required><p class ="text" id="message"></p>
+                    <script>
+                        function myFunction() {
+                            var x, y;
+                            x = document.getElementById("password").value;
+                            y = document.getElementById("confirm_password").value;
+                            if (x != y) {
+                                document.getElementById("message").innerHTML = "*password incorrect";
+                            } else {
+                                document.getElementById("message").innerHTML = "*password correct";
+                            }
+                        }
+                    </script>
+                <input type="submit" value="REGISTER">
+            </form>
+        </div>
+        <div class="column3"></div>
+    </div>
+</body>
+</html>

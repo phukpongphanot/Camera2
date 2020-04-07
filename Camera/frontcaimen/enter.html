@@ -1,0 +1,764 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html>
+
+<head>
+
+    <title>THE CAIMAN : Enjoy & Have a bright day!</title>
+
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script>
+
+        function validateForm() {
+
+            var x = document.forms["form"]["password"].value;
+
+            var y = document.forms["form"]["confirm_password"].value;
+
+            if (x != y){
+
+                alert("Please,try again.");
+
+                return false;}}  
+
+    </script>
+
+    <style>
+
+        * {box-sizing: border-box;}
+
+        body {margin: 0;}
+
+
+
+        @font-face{
+
+            src: url(fonts/SukhumvitSet-Bold.ttf);
+
+            font-family:sb;}
+
+        @font-face{
+
+            src: url(fonts/SukhumvitSet-SemiBold.ttf);
+
+            font-family:ssb;}
+
+        @font-face{
+
+            src: url(fonts/SukhumvitSet-Light.ttf);
+
+            font-family:sl;}
+
+        @font-face{
+
+            src: url(fonts/SukhumvitSet-Medium.ttf);
+
+            font-family:sm;}
+
+        @font-face{
+
+            src: url(fonts/SukhumvitSet-Text.ttf);
+
+            font-family:st;}
+
+        @font-face{
+
+            src: url(fonts/SukhumvitSet-Thin.ttf);
+
+            font-family:sth;}
+
+
+
+        body{
+
+            transform: translate(-50%, -50%);
+
+            margin: 0;
+
+            position: absolute;
+
+            top: 50%;
+
+            left: 50%;
+
+            background-image: url( "{% static 'img/bg.png' %}");
+
+            background-repeat:no-repeat;
+
+            background-size: cover;
+
+            background-position: center top;
+
+            background-attachment: fixed;
+
+            background-color:rgb(128, 128, 128,0.6);
+
+            background-blend-mode: lighten;}
+
+        #box {
+
+            border-radius: 0px 0px 25px 25px;
+
+            background: rgb(230, 230, 230);
+
+            margin-top: -2.5vw;
+
+            padding-top: 0; 
+
+            padding-bottom: 3%;
+
+            width: 100%;} 
+
+        .short{
+
+            box-sizing: border-box;
+
+            width: 10%;
+
+            border: 0.2px solid #ccc;
+
+            border-radius: 0.4vw;
+
+            background-color: white;
+
+            font-family:sm;
+
+            font-size: 5vw;
+
+            text-align: right;
+
+            margin-top: -1.2vw;
+
+            margin-bottom: 1vw;}
+
+        input[type=submit] {
+
+            background-color: #99cc33;
+
+            border:none;
+
+            border-radius: 0.3vw;
+
+            font-family: ssb;
+
+            letter-spacing: 0.3vw;
+
+            font-size:2vw;
+
+            color: white;
+
+            padding: 2% 5%;
+
+            cursor: pointer;
+
+            display: block;
+
+            margin-top: 2vw;
+
+            margin-bottom: 2vw;
+
+            margin-left: auto;
+
+            margin-right: auto;}
+
+        .text{
+
+            font-family:sm;
+
+            font-size:1.5vw;
+
+            margin-left: 15%;
+
+            margin-right: auto;
+
+            margin-top: -2.5vw;}
+
+        .text2{
+
+            color: black;
+
+            text-align:center;
+
+            font-family:sm;
+
+            font-size:2.5vw;
+
+            margin-top: 2vw;}
+
+        .text3{
+
+            text-align: center;
+
+            position: absolute;
+
+            margin-bottom:0;
+
+            top:110%;
+
+            width: 100%;
+
+            overflow: hidden;
+
+            color:white;
+
+            font-family:sl;
+
+            font-size:1vw;
+
+            padding-bottom: 0;}
+
+        .imgsize1{
+
+            width:9%;
+
+            display: block;
+
+            margin-top: 0;
+
+            margin-left: 5%;
+
+            margin-right: auto;}
+
+        .imgsize2{
+
+            width:20%;
+
+            display: block;
+
+            margin-top: -6vw;
+
+            margin-left: auto;
+
+            margin-right: auto;}
+
+        .imgsize4{
+
+            display: none;}
+
+        @media screen and (min-width:700px) and (max-width : 1024px) and (orientation : portrait) { 
+
+        body{
+
+            transform: translate(-10%, -50%);
+
+            margin: 0;
+
+            position: absolute;
+
+            top: 50%;
+
+            left: 18%;
+
+            /* background-image: url("bg_phone.png"); */
+            background-image: url( "{% static 'img/bg_phone.png' %}");
+
+            background-repeat:no-repeat;
+
+            background-size: auto 100%;
+
+            background-position: center top;
+
+            background-attachment: fixed;
+
+            background-color:rgb(128, 128, 128,0.6);
+
+            background-blend-mode: lighten;}
+
+        #box {
+
+            border-radius: 0 0 25px 25px;
+
+            background: rgb(230, 230, 230);
+
+            padding-top: 10%; 
+
+            width: 100%;} 
+
+        .text{
+
+            font-family:sm;
+
+            font-size:3.5vw;
+
+            margin-left: 23%;
+
+            margin-right: auto;
+
+            margin-top: -7vw;}
+
+        .short{
+
+            box-sizing: border-box;
+
+            width: 10%;
+
+            border: 0.2px solid #ccc;
+
+            border-radius: 0.4vw;
+
+            background-color: white;
+
+            font-family:sm;
+
+            font-size: 5vw;
+
+            text-align: right;
+
+            margin-top: -5vw;
+
+            margin-bottom: 1vw;}
+
+        input[type=submit] {
+
+            background-color: #99cc33;
+
+            border:none;
+
+            border-radius: 0.3vw;
+
+            font-family: ssb;
+
+            letter-spacing: 0.3vw;
+
+            font-size:2vw;
+
+            color: white;
+
+            padding: 2% 5%;
+
+            cursor: pointer;
+
+            display: block;
+
+            margin-top: 2vw;
+
+            margin-bottom: 2vw;
+
+            margin-left: auto;
+
+            margin-right: auto;}
+
+        .text2{
+
+            color: black;
+
+            text-align:center;
+
+            font-family:sm;
+
+            font-size:8vw;
+
+            margin-top: 2vw;}
+
+        .text3{
+
+           display: none;}
+
+        .imgsize1{
+
+            width:16%;
+
+            display: block;
+
+            margin-top: -15%;
+
+            margin-left: 5%;
+
+            margin-right: auto;}
+
+        .imgsize2{
+
+            display: none;}
+
+        .imgsize4{
+
+            width:100%;
+
+            display: block;
+
+            margin-top: -30%;
+
+            margin-bottom: auto;
+
+            margin-left: auto;
+
+            margin-right: auto;}}
+
+        @media screen and (min-width:700px) and (max-width : 1024px) and (orientation : landscape) {
+
+        body{
+
+            transform: translate(-50%, -50%);
+
+            margin: 0;
+
+            position: absolute;
+
+            top: 45%;
+
+            left: 50%;
+
+            /* background-image: url("bg.png"); */
+            background-image: url( "{% static 'img/bg.png' %}");
+
+            background-repeat:no-repeat;
+
+            background-size: cover;
+
+            background-position: center top;
+
+            background-attachment: fixed;
+
+            background-color:rgb(128, 128, 128,0.6);
+
+            background-blend-mode: lighten;}
+
+        #box {
+
+            border-radius: 0px 0px 25px 25px;
+
+            background: rgb(230, 230, 230);
+
+            margin-top: -2.5vw;
+
+            padding-top: 0; 
+
+            padding-bottom: 3%;
+
+            width: 100%;} 
+
+        .text{
+
+            font-family:sm;
+
+            font-size:1.5vw;
+
+            margin-left: 15%;
+
+            margin-right: auto;
+
+            margin-top: -2.5vw;}
+
+        .short{
+
+            box-sizing: border-box;
+
+            width: 10%;
+
+            border: 0.2px solid #ccc;
+
+            border-radius: 0.4vw;
+
+            background-color: white;
+
+            font-family:sm;
+
+            font-size: 5vw;
+
+            text-align: right;
+
+            margin-top: -1.2vw;
+
+            margin-bottom: 1vw;}
+
+        input[type=submit] {
+
+            background-color: #99cc33;
+
+            border:none;
+
+            border-radius: 0.3vw;
+
+            font-family: ssb;
+
+            letter-spacing: 0.3vw;
+
+            font-size:2vw;
+
+            color: white;
+
+            padding: 2% 5%;
+
+            cursor: pointer;
+
+            display: block;
+
+            margin-top: 2vw;
+
+            margin-bottom: 2vw;
+
+            margin-left: auto;
+
+            margin-right: auto;}
+
+        .text2{
+
+            color: black;
+
+            text-align:center;
+
+            font-family:sm;
+
+            font-size:2.5vw;
+
+            margin-top: 2vw;}
+
+        .text3{
+
+            text-align: center;
+
+            position: absolute;
+
+            margin-bottom:0;
+
+            top:110%;
+
+            width: 100%;
+
+            overflow: hidden;
+
+            color:white;
+
+            font-family:sl;
+
+            font-size:1vw;
+
+            padding-bottom: 0;}
+
+        .imgsize1{
+
+            width:9%;
+
+            display: block;
+
+            margin-top: 0;
+
+            margin-left: 5%;
+
+            margin-right: auto;}
+
+        .imgsize2{
+
+            width:100%;
+
+            display: block;
+
+            margin-top: -6vw;
+
+            margin-left: auto;
+
+            margin-right: auto;}
+
+        .imgsize4{
+
+            display: none;}}
+
+        @media screen and (max-width: 600px) { 
+
+        body{
+
+            transform: translate(-10%, -50%);
+
+            margin: 0;
+
+            position: absolute;
+
+            top: 50%;
+
+            left: 18%;
+
+            /* background-image: url("bg_phone.png"); */
+            background-image: url( "{% static 'img/bg_phone.png' %}");
+
+            background-repeat:no-repeat;
+
+            background-size: auto 100%;
+
+            background-position: center top;
+
+            background-attachment: fixed;
+
+            background-color:rgb(128, 128, 128,0.6);
+
+            background-blend-mode: lighten;}
+
+        #box {
+
+            border-radius: 0 0 25px 25px;
+
+            background: rgb(230, 230, 230);
+
+            padding-top: 10%; 
+
+            width: 100%;} 
+
+        .text{
+
+            font-family:sm;
+
+            font-size:3.5vw;
+
+            margin-left: 23%;
+
+            margin-right: auto;
+
+            margin-top: -7vw;}
+
+        .short{
+
+            box-sizing: border-box;
+
+            width: 12%;
+
+            border: 0.2px solid #ccc;
+
+            border-radius: 0.4vw;
+
+            background-color: white;
+
+            font-family:sm;
+
+            font-size: 10vw;
+
+            text-align: right;
+
+            margin-top: -5vw;
+
+            margin-bottom: 2vw;}
+
+        input[type=submit] {
+
+            background-color: #99cc33;
+
+            border:none;
+
+            border-radius: 0.3vw;
+
+            font-family: ssb;
+
+            letter-spacing: 0.3vw;
+
+            font-size:4vw;
+
+            color: white;
+
+            padding: 2% 5%;
+
+            cursor: pointer;
+
+            display: block;
+
+            margin-top: 4vw;
+
+            margin-bottom: 4vw;
+
+            margin-left: auto;
+
+            margin-right: auto;}
+
+        .text2{
+
+            color: black;
+
+            text-align:center;
+
+            font-family:sm;
+
+            font-size:8vw;
+
+            margin-top: 2vw;}
+
+        .text3{
+
+           display: none;}
+
+        .imgsize1{
+
+            width:16%;
+
+            display: block;
+
+            margin-top: -15%;
+
+            margin-left: 5%;
+
+            margin-right: auto;}
+
+        .imgsize2{
+
+            display: none;}
+
+        .imgsize4{
+
+            width:100%;
+
+            display: block;
+
+            margin-top: -30%;
+
+            margin-bottom: auto;
+
+            margin-left: auto;
+
+            margin-right: auto;}}
+
+    </style>
+
+</head>
+
+<body>
+
+    
+
+    <img src="{% static "img/c_long1.png"%}" class="imgsize2"  />
+    <img src="{% static "img/c_long2.png"%}" class="imgsize4"  />
+    
+
+
+    <div id="box">
+
+      
+        <img src="{% static "img/c_logo.png"%}" class="imgsize2"  />
+
+        <p class="text2">ยืมกล้อง : BORROW THE CAMERA</p>
+
+        <p class="text2">Enter code</p>
+        
+
+        <form name = "form" action="/enter_b"  method="post"  style="text-align: center;">
+            {% csrf_token %}
+            <p>
+
+                <input type="number" name="password1" id="password1" class="short" placeholder=1 required>
+
+                <input type="number" name="password2" id="password2" class="short" placeholder=2 required>
+
+                <input type="number" name="password3" id="password3" class="short" placeholder=3 required>
+
+                <input type="number" name="password4" id="password4" class="short" placeholder=4 required>
+
+                <input type="number" name="password5" id="password5" class="short" placeholder=5 required>
+
+                <input type="number" name="password6" id="password6" class="short" placeholder=6 required></p>   
+
+            <input type="submit" value="CONFIRM">
+
+        </form>
+        {% for message in messages %}
+        <div class="alert alert-danger" role="alert">    <!--Alert (พื้นหลังแดง)-->
+            {{message}}
+        </div>
+        {% endfor %}
+
+        <p class="text3">@THE CAIMAN : BORROW AND RETURN CAMERA SYSTEM FOR FIBO</p>
+
+    </div>
+
+</body>
+
+
+</html>

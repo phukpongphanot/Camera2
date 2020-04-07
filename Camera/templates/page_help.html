@@ -1,0 +1,20 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+    <h2 align="center">คำร้องเรียนและคำแนะนำ</h2>
+    <form action="addHelp" method="post"> <!--เมื่อใช้ post ข้อความจะไม่ขึ้นที่ url ถ้าใช้ get ข้อความจะขึ้นที่ url -->
+        {% csrf_token %}  <!--ถ้าใช้ post ต้องใช้คำสั่งนี้ด้วย เพื่อเพิ่มความปลอดภัย  -->
+        <div class="form-group">
+            <lable for="">รหัสนักศึกษา</lable>
+            <input type="text" class="form-control" name="id-code" >
+
+        </div>
+        <div class="form-group">
+            <lable for="">เรื่องร้องเรียนหรือคำแนะนำ</lable>
+            <input type="text" class="form-control" name="content">
+        </div>
+        <input type="Submit" value="บันทึกข้อความ" class="btn btn-primary">
+    </form>
+
+{% endblock %}

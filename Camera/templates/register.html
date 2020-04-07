@@ -1,0 +1,49 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+    <h2 align="center">สมัครสมาชิก</h2>
+   
+    {% for message in messages %}
+        <div class="alert alert-danger" role="alert">    <!--Alert (พื้นหลังแดง)-->
+            {{message}}
+        </div>
+        
+    {% endfor %}
+    <form action="addregister" method="post"> <!--เมื่อใช้ post ข้อความจะไม่ขึ้นที่ url ถ้าใช้ get ข้อความจะขึ้นที่ url -->
+        {% csrf_token %}  <!--ถ้าใช้ post ต้องใช้คำสั่งนี้ด้วย เพื่อเพิ่มความปลอดภัย  -->
+        <div class="form-group">
+            <lable for="">Student ID</lable>
+            <input type="text" class="form-control" name="StudentID" >
+
+        </div>
+        <div class="form-group">
+            <lable for="">First Name</lable>
+            <input type="text" class="form-control" name="FirstName">
+        </div>
+
+        <div class="form-group">
+            <lable for="">Last Name</lable>
+            <input type="text" class="form-control" name="LastName">
+        </div>
+
+        <div class="form-group">
+            <lable for="">Email</lable>
+            <input type="email" class="form-control" name="Email">
+        </div>
+
+        <div class="form-group">
+            <lable for="">Password</lable>
+            <input type="password" class="form-control" name="Password">
+        </div>
+
+        <div class="form-group">
+            <lable for="">Re-Password</lable>
+            <input type="password" class="form-control" name="RePassword">
+        </div>
+        
+
+        <input type="Submit" value="ลงทะเบียน" class="btn btn-primary">
+    </form>
+
+{% endblock %}

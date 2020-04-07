@@ -1,0 +1,57 @@
+{
+    "user_info": {
+        "1": {
+            "id": 789
+        },
+        "61340500048": {
+            "id": "61340500048",
+            "first_name": "phukpongphanot",
+            "last_name": "decha",
+            "password": "123",
+            "type_user": "user_id",
+            "status": "init",
+            "tel": "0622429835",
+            "history": "register at 2020-04-06 21:21:19"
+        },
+        "789": {
+            "id": "789",
+            "first_name": "a",
+            "last_name": "a",
+            "password": "789",
+            "type_user": "user_id",
+            "status": "init",
+            "tel": "123",
+            "history": "register at 2020-04-07 11:15:12"
+        }
+    },
+    "app_info": {
+        "61340500048": {
+            "id": "61340500048",
+            "action": "borrow",
+            "datetime": "2020-04-07 10:13:03",
+            "password": "123",
+            "camera_id": 18575154153241,
+            "random_key": 158483
+        },
+        "789": {
+            "id": "789",
+            "action": "",
+            "datetime": "",
+            "password": "789",
+            "camera_id": "",
+            "random_key": 285910
+        }
+    },
+    "camera_info": {
+        "1": {
+            "camera_id": 18575154153241,
+            "camera_status": "borrow",
+            "camera_data": "2020-04-07 10:13:03"
+        },
+        "2": {
+            "camera_id": 1727210116334,
+            "camera_status": "",
+            "camera_data": "2020-04-07 11:18:48"
+        }
+    }
+}

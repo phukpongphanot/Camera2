@@ -1,0 +1,473 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <title>Welcome to THE CAIMAN</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% for message in messages %}
+        <div class="alert alert-danger" role="alert">    <!--Alert (พื้นหลังแดง)-->
+            {{message}}
+        </div>
+    {% endfor %}
+    <style>
+        @font-face{            
+          src: url(fonts/SukhumvitSet-Bold.ttf);
+          font-family:sb;}
+        @font-face{
+          src: url(fonts/SukhumvitSet-SemiBold.ttf);
+          font-family:ssb;}
+        @font-face{
+          src: url(fonts/SukhumvitSet-Light.ttf);
+          font-family:sl;}
+        @font-face{
+          src: url(fonts/SukhumvitSet-Medium.ttf);
+          font-family:sm;}
+        @font-face{
+          src: url(fonts/SukhumvitSet-Text.ttf);
+          font-family:st;}
+        @font-face{
+          src: url(fonts/SukhumvitSet-Thin.ttf);
+          font-family:sth;}  
+        
+        body{
+          margin: 0;
+          background-image: url( "{% static 'img/bg.png' %}");
+          background-repeat:no-repeat;
+          background-size: cover;
+          background-position: center top;
+          background-attachment: fixed;}   
+        .column1{
+          flex: 1;
+          margin-top: 5%;
+          width: 33.33%;
+          padding-top: 0;
+          padding-bottom: 1%;
+          float: left;
+          background-color:rgb(128, 128, 128,0.6);
+          background-blend-mode: lighten;}
+        .column2{
+          flex: 1;
+          margin-top: 5%;
+          width: 33.33%;
+          padding-top: 0;
+          padding-bottom: 1%;
+          float: left;
+          background-color:rgb(128, 128, 128,0.6);
+          background-blend-mode: lighten;}
+        .column3{
+          flex: 1;
+          margin-top: 5%;
+          width: 33.33%;
+          padding-top: 0;
+          padding-bottom: 1%;
+          float: left;
+          background-color:rgb(128, 128, 128,0.6);
+          background-blend-mode: lighten;}
+        input[type=submit] {
+          background-color: #99cc33;
+          border:none;
+          border-radius: 0.6vw;
+          font-family: sm;
+          font-size:1.5vw;
+          color: white;
+          padding: 3% 20%;
+          margin: 0% 1%;
+          cursor: pointer;}
+        .user{            
+          margin-bottom: 1vw;
+          box-sizing: border-box;
+          width: 100%;
+          border: 0.2px solid #ccc;
+          border-radius: 0.4vw;
+          background-color: white;
+          background-image: url('user.png');
+          height: 100%;
+          background-position: center; 
+          background-size: contain;
+          background-repeat: no-repeat;
+          font-family:st;
+          font-size: 1.2vw;}
+        .pass{
+          box-sizing: border-box;
+          width: 100%;
+          border: 0.2px solid #ccc;
+          border-radius: 0.4vw;
+          background-color: white;
+          background-image: url('lock.png');
+          height: 100%;
+          background-position: center; 
+          background-size: contain;
+          background-repeat: no-repeat;
+          font-family:st;
+          font-size: 1.2vw;}
+        .green{
+          content: url("green_circle.png");
+          width:0.8vw; 
+          height:0.8vw;}
+        .red{
+          content: url("red_circle.png");
+          width:0.8vw; 
+          height:0.8vw;}
+        .create{
+          margin-left:2%;
+          color: #cc3333 ;
+          font-family:sb;
+          background-color: transparent;
+          text-decoration: none;}
+        .forget{color: white;
+          background-color: transparent;
+          text-decoration: none;}
+        .text1{text-align:right;font-family:sm;font-size:1vw;margin-top: 1%;}
+        .text2{color:white;text-align:center;font-family:ssb;font-size:1.2vw;margin-top: 1%;margin-top: 1%;}
+        .text3{text-align:end;margin-top:2vw;margin-right: 6vw;}
+        .text4{color:white;font-family:st;letter-spacing:0.1vw;font-size:1vw;line-height:1vw;} 
+        .text5{text-align:end;margin-right: 5vw;}           
+        .logo{
+            width:70%;
+            display: block;
+            margin-bottom: -1vw;
+            margin-left: auto;
+            margin-right: auto;}
+        .row{
+            display: flex;
+            width: 100%;}
+        
+        @media screen and (min-width:700px) and (max-width : 1024px) and (orientation : portrait) { 
+          body{
+          margin: 0;
+          background-image: url("bg_phone.png");
+          background-repeat:no-repeat;
+          background-size: auto 150%;
+          background-attachment: scroll;}   
+        .column1{
+          display: none;}
+        .column2{
+          margin-top: 10%;
+          width: 100%;
+          padding-top: 7%;
+          padding-bottom: 1%;
+          float: left;
+          background-color:rgb(128, 128, 128,0.6);
+          background-blend-mode: lighten;}
+        .column3{
+          margin-top: 0%;
+          width: 100%;
+          padding-top: 0;
+          padding-bottom: 0;
+          float: left;
+          background-color:rgb(128, 128, 128,0.6);
+          background-blend-mode: lighten;}
+        input[type=submit] {
+          background-color: #99cc33;
+          border:none;
+          border-radius: 1vw;
+          font-family: sm;
+          font-size:3vw;
+          color: white;
+          padding: 3% 15%;
+          margin: 0% 1%;
+          cursor: pointer;}
+        .user{           
+          margin-top: 5vw; 
+          margin-bottom: 2vw;
+          box-sizing: border-box;
+          width: 50%;
+          border: 0.8px solid #ccc;
+          border-radius: 0.8vw;
+          background-color: white;
+          background-image: url('user.png');
+          height: 100%;
+          background-position: center; 
+          background-size: contain;
+          background-repeat: no-repeat;
+          font-family:st;
+          font-size: 2vw;}
+        .pass{
+          margin-top: 2vw;
+          box-sizing: border-box;
+          width: 50%;
+          border: 0.8px solid #ccc;
+          border-radius: 0.8vw;
+          background-color: white;
+          background-image: url('lock.png');
+          height: 100%;
+          background-position: center; 
+          background-size: contain;
+          background-repeat: no-repeat;
+          font-family:st;
+          font-size: 2vw;}
+        .green{
+          content: url("green_circle.png");
+          width:2vw; 
+          height:2vw;}
+        .red{
+          content: url("red_circle.png");
+          width:2vw; 
+          height:2vw;}
+        .create{
+          margin-left:1.5%;
+          color: #cc3333 ;
+          font-family:sb;
+          background-color: transparent;
+          text-decoration: none;}
+        .forget{
+          color: white;
+          background-color: transparent;
+          text-decoration: none;}
+        .text1{text-align:end;font-family:sm;font-size:2vw;margin-top:1%;margin-right:25%;}
+        .text2{color:white;text-align:center;font-family:ssb;font-size:2.5vw;margin-top:2%;letter-spacing:0.1vw;}
+        .text3{text-align:center;margin-top:1.5vw;}
+        .text4{color:white;font-family:st;letter-spacing:0vw;font-size:2.5vw;line-height:0.5vw;} 
+        .text5{text-align:center;margin-top:-1vw;}           
+        .logo{
+            width:35%;
+            display: block;
+            margin-top: -5vw;
+            margin-bottom: -5vw;
+            }
+        .row{
+            display: block;
+            width: 100%;}}
+        @media screen and (min-width:700px) and (max-width : 1024px) and (orientation : landscape) { 
+        body{
+          margin: 0;
+          background-image: url("bg.png");
+          background-repeat:no-repeat;
+          background-size: cover;
+          background-position: center top;
+          background-attachment: fixed;}   
+        .column1{
+          flex: 1;
+          margin-top: 10%;
+          width: 33.33%;
+          padding-top: 0;
+          padding-bottom: 2%;
+          float: left;
+          background-color:rgb(128, 128, 128,0.6);
+          background-blend-mode: lighten;}
+        .column2{
+          flex: 1;
+          margin-top: 10%;
+          width: 33.33%;
+          padding-top: 0;
+          padding-bottom: 2%;
+          float: left;
+          background-color:rgb(128, 128, 128,0.6);
+          background-blend-mode: lighten;}
+        .column3{
+          flex: 1;
+          margin-top: 10%;
+          width: 33.33%;
+          padding-top: 0;
+          padding-bottom: 2%;
+          float: left;
+          background-color:rgb(128, 128, 128,0.6);
+          background-blend-mode: lighten;}
+        input[type=submit] {
+          background-color: #99cc33;
+          border:none;
+          border-radius: 0.2vw;
+          font-family: sm;
+          font-size:1.5vw;
+          color: white;
+          padding: 3% 20%;
+          margin: 0% 1%;
+          cursor: pointer;}
+        .user{            
+          margin-bottom: 1vw;
+          box-sizing: border-box;
+          width: 100%;
+          border: 0.2px solid #ccc;
+          border-radius: 0.4vw;
+          background-color: white;
+          background-image: url('user.png');
+          height: 100%;
+          background-position: center; 
+          background-size: contain;
+          background-repeat: no-repeat;
+          font-family:st;
+          font-size: 1.2vw;}
+        .pass{
+          box-sizing: border-box;
+          width: 100%;
+          border: 0.2px solid #ccc;
+          border-radius: 0.4vw;
+          background-color: white;
+          background-image: url('lock.png');
+          height: 100%;
+          background-position: center; 
+          background-size: contain;
+          background-repeat: no-repeat;
+          font-family:st;
+          font-size: 1.2vw;}
+        .green{
+          content: url("green_circle.png");
+          width:0.8vw; 
+          height:0.8vw;}
+        .red{
+          content: url("red_circle.png");
+          width:0.8vw; 
+          height:0.8vw;}
+        .create{
+          margin-left:2%;
+          color: #cc3333 ;
+          font-family:sb;
+          background-color: transparent;
+          text-decoration: none;}
+        .forget{color: white;
+          background-color: transparent;
+          text-decoration: none;}
+        .text1{text-align:right;font-family:sm;font-size:1.2vw;margin-top: 1%;}
+        .text2{color:white;text-align:center;font-family:ssb;font-size:1.5vw;margin-top: 1%;margin-top: 1%;}
+        .text3{text-align:end;margin-top:2vw;margin-right: 6.5vw;}
+        .text4{color:white;font-family:st;letter-spacing:0.1vw;font-size:1vw;line-height:1vw;} 
+        .text5{text-align:end;margin-right: 5vw;margin-top: -1vw;}           
+        .logo{
+            width:70%;
+            display: block;
+            margin-bottom: -1vw;
+            margin-left: auto;
+            margin-right: auto;}
+        .row{
+            display: flex;
+            width: 100%;}}
+        @media screen and (max-width: 600px) { 
+        body{
+          margin: 0;
+          background-image: url("bg_phone.png");
+          background-repeat:no-repeat;
+          background-size: auto 175%;
+          background-attachment: scroll;}   
+        .column1{
+          display: none;}
+        .column2{
+          margin-top: 10%;
+          width: 100%;
+          padding-top: 0;
+          padding-bottom: 1%;
+          float: left;
+          background-color:rgb(128, 128, 128,0.6);
+          background-blend-mode: lighten;}
+        .column3{
+          margin-top: 0;
+          width: 100%;
+          padding-top: 0;
+          padding-bottom: 0;
+          float: left;
+          background-color:rgb(128, 128, 128,0.6);
+          background-blend-mode: lighten;}
+        input[type=submit] {
+          background-color: #99cc33;
+          border:none;
+          border-radius: 1vw;
+          font-family: sm;
+          font-size:5vw;
+          color: white;
+          padding: 3% 15%;
+          margin: 0% 1%;
+          cursor: pointer;}
+        .user{           
+          margin-top: -5vw; 
+          margin-bottom: 2vw;
+          box-sizing: border-box;
+          width: 70%;
+          border: 0.8px solid #ccc;
+          border-radius: 0.8vw;
+          background-color: white;
+          background-image: url('user.png');
+          height: 100%;
+          background-position: center; 
+          background-size: contain;
+          background-repeat: no-repeat;
+          font-family:st;
+          font-size: 4vw;}
+        .pass{
+          margin-top: 2vw;
+          box-sizing: border-box;
+          width: 70%;
+          border: 0.8px solid #ccc;
+          border-radius: 0.8vw;
+          background-color: white;
+          background-image: url('lock.png');
+          height: 100%;
+          background-position: center; 
+          background-size: contain;
+          background-repeat: no-repeat;
+          font-family:st;
+          font-size: 4vw;}
+        .green{
+          content: url("green_circle.png");
+          width:2vw; 
+          height:2vw;}
+        .red{
+          content: url("red_circle.png");
+          width:2vw; 
+          height:2vw;}
+        .create{
+          margin-left:2%;
+          color: #cc3333 ;
+          font-family:sb;
+          background-color: transparent;
+          text-decoration: none;}
+        .forget{
+          color: white;
+          background-color: transparent;
+          text-decoration: none;}
+        .text1{text-align:end;font-family:sm;font-size:3.5vw;margin-top:2%;margin-right:15%;}
+        .text2{color:white;text-align:center;font-family:ssb;font-size:4vw;margin-top:2%;letter-spacing:0.1vw;}
+        .text3{text-align:center;margin-top:1.5vw;}
+        .text4{color:white;font-family:st;letter-spacing:0vw;font-size:2.5vw;line-height:0.5vw;} 
+        .text5{text-align:center;margin-top:-2.5vw;}           
+        .logo{
+            width:70%;
+            display: block;
+            margin-top: -5vw;
+            margin-bottom: -5vw;
+            }
+        .row{
+            display: block;
+            width: 100%;}}
+        
+    </style>
+</head>
+<body>
+    <div class="row">
+        <div class="column1"></div>
+        <div class="column2">
+          <!-- <img src = "logo.png" class="logo"> -->
+          <img src="{% static "img/logo.png"%}" class="logo" />
+         
+          
+              
+          <form style = "text-align:center;" action="indext_check"  method="post">
+            {% csrf_token %}
+              <input type="text" name="id" id="id" class="user" required>
+              <input type="password" id="pwd" name="pw" class="pass" required><br>
+              <br>
+              <input type="submit" value="LOGIN">
+              
+          </form>
+          <p class="text2">Don't have an account?<a href="/register" class ="create" target="_top">Create new account.</a></p>
+        </div>
+        <div class="column3">
+          <p class="text3">
+            <span class = "green"></span>
+            <span id="Available" class="text4"></span>
+            <script>
+              var x = 10;
+              document.getElementById("Available").innerHTML ="Available camera : " + x;</script>
+          </p>
+        <p class="text5">
+            <span class = "red" ></span>
+            <span id="Disavailable" class="text4"></span>
+              <script>
+                var x = 10;
+                document.getElementById("Disavailable").innerHTML ="Disavailable camera : " + x;</script>
+        </p>
+        <a class="nav-link" href="test"> ลบ <span class="sr-only"></span></a>
+        </div>
+    </div>
+</body>
+</html>

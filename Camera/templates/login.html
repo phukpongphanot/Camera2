@@ -1,0 +1,28 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+    <h2 align="center">เข้าสู่ระบบ</h2>
+    {% for message in messages %}
+        <div class="alert alert-danger" role="alert">    <!--Alert (พื้นหลังแดง)-->
+            {{message}}
+        </div>
+    {% endfor %}
+    <form action="login" method="post"> <!--เมื่อใช้ post ข้อความจะไม่ขึ้นที่ url ถ้าใช้ get ข้อความจะขึ้นที่ url -->
+        {% csrf_token %}  <!--ถ้าใช้ post ต้องใช้คำสั่งนี้ด้วย เพื่อเพิ่มความปลอดภัยgit initgit init  -->
+        
+        <div class="form-group">
+            <lable for="">Student ID</lable>
+            <input type="text" class="form-control" name="StudentID" >
+        </div>
+       
+        
+        <div class="form-group">
+            <lable for="">Password</lable>
+            <input type="password" class="form-control" name="Password">
+        </div>
+
+        <input type="Submit" value="Login" class="btn btn-primary">
+    </form>
+
+{% endblock %}
