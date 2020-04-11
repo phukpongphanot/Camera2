@@ -11,6 +11,26 @@ def get_data_json():
         json_obj = json.load(f)
     return json_obj
 
+def get_data_sql(table_name, key, value):
+    db = connect_db()
+    cursor = db.cursor()
+    sql_select_query = "SELECT * FROM `{table}` WHERE {key} = {value}".format(table=table_name,
+                                                                              key=key.upper(), value=value)
+    cursor.execute(sql_select_query)
+    record = cursor.fetchall()
+    return record
+
+def get_data_sql1(table_name):
+    db = connect_db()
+    cursor = db.cursor()
+    sql_select_query = "SELECT * FROM `{table}` ".format(table=table_name)
+                                                                        
+    cursor.execute(sql_select_query)
+    record = cursor.fetchall()
+    return record
+
+
+
 
 def insert_json(place, item):
     """
@@ -104,14 +124,6 @@ def connect_db():
     return con
 
 
-def get_data_sql(table_name, key, value):
-    db = connect_db()
-    cursor = db.cursor()
-    sql_select_query = "SELECT * FROM `{table}` WHERE {key} = {value}".format(table=table_name,
-                                                                              key=key.upper(), value=value)
-    cursor.execute(sql_select_query)
-    record = cursor.fetchall()
-    return record
 
 
 

@@ -56,19 +56,33 @@ def index(request):
 def indext_check(request):
     StudentID = request.POST['id']
     Password = request.POST['pw']
-    
+    # json_obj = api.get_data_json()
+    # data = json_obj["user_info"][StudentID]
     print(StudentID)
     print(Password)
 
     check = api.get_data_sql("user_info", "id", StudentID)
-    print(check[0])
+    print("////////////////////")
+    # print(check[0])
+    check1 = api.get_data_sql1("user_info")
+    for i in check1:
+        print(i[0])
+    # print(Password)
+    # print(check[0][3])
+    print("////////////////////")
    
-    
-    if StudentID ==  str(check[0][0]) and Password == check[0][3]:
-        api.update_json("user_info", "1", "id", int(StudentID))
 
-        return redirect('/select')
+    for i in check1:
+        if i[0] ==  StudentID:
+            
+            if StudentID ==  str(check[0][0]) and Password == check[0][3]:
+                api.update_json("user_info", "1", "id", int(StudentID))
+                return redirect('/select')
 
+            else:
+                messages.info(request,'ข้อมูลไม่ถูกต้อง')
+      
+                return redirect('/index')
     else:
         messages.info(request,'ข้อมูลไม่ถูกต้อง')
         return redirect('/index')
@@ -254,7 +268,7 @@ def done_scan_return(request):
         for scan1 in data:
             data3 = json_obj["camera_info"][scan1]["camera_id"]
             if data3 == data5:
-                api.update_json("camera_info", str(scan1), "camera_status", "")
+                api.update_json("camera_info", str(scan1), "camera_status", "return")
                 api.update_json("camera_info", str(scan1), "camera_data", date)
                 api.update_json("app_info", str(data1), "action", "return")
                 # api.update_json("app_info", str(data1), "camera_id","")
@@ -277,52 +291,53 @@ def complete_return(request):
     data5 = json_obj["app_info"][str(data1)]["camera_id"]
     data7 = json_obj["app_info"]["61340500048"]  
     
-    # for scan1 in data:
-    #     data3 = json_obj["camera_info"][scan1]["camera_id"]
-    #     if data3 == data5:
-    #         api.update_json("camera_info", str(scan1), "camera_status", "")
-    #         api.update_json("camera_info", str(scan1), "camera_data", date)
-    #         api.update_json("app_info", str(data1), "action", "")
-    #         api.update_json("app_info", str(data1), "camera_id","")
-    #         api.update_json("app_info", str(data1), "datetime",date)
+    
             
     
     data6 = json_obj["app_info"][str(data1)]
-    print("----------------------------------")
-    print("****************************")
-    print(data6)
+    # print("----------------------------------")
+    # print("****************************")
+    # print(data6)
+    # print(data6["camera_id"])
+    # print(data)
+    # for i in range(1,3):
+    #     s = data[str(i)]
+    #     print(s["camera_id"])
+    #     if s["camera_id"] == data6["camera_id"]
+        
+
+
     print("----------------------------------")
     db = connect_db()
     cursor = db.cursor()
     cursor.execute(api.insert_sql("app_info", data6))
-    # cursor.execute(api.insert_sql("camerra_info", data6))
-    # api.update_json('app_info', "61340500048", "action", 'return')  
-    # sql = api.update_sql("app_info", "action", "random_key",data7)
-    # cursor.execute(sql)
+    for i in range(1,3):
+        
+        s = data[str(i)]
+        # print("----------------------------------")
+        # print("****************************")
+        # print("****************************")
+        # print(s["camera_id"])
+        # print(data6["camera_id"])
+        if str(s["camera_id"]) == str(data6["camera_id"]):
+            print("----------------------------------")
+            print("****************************")
+            print("****************************")
+            # api.update_json("camera_info", str(i), "camera_status", "return")
+            print(s)
+            cursor.execute(api.insert_sql("camera_info", s))
+            api.update_json("camera_info", str(i), "camera_status", "")
+
     db.commit()
     db.close()
     api.update_json("app_info", str(data1), "action", "")
     api.update_json("app_info", str(data1), "camera_id","")
-
+    
     api.update_json("app_info", str(data1), "datetime","")
-            
-    # api.update_json('app_info', str(data1), "action", '')
-    # api.update_json("app_info", str(data1), "action", "return")
-    # data6 = json_obj["app_info"][str(data1)]
     
-    
-    print("//////////////////////////////////////////")
-    print(data4)
-    # cursor.execute(api.insert_sql("app_info", data6))
-    # cursor.execute(api.update_sql("camera_info", "camera_status", 1))
     
 
     return render(request,'complete_return.html',{"user":data1,"date":date})
-
-
-
-
-
 
 
 
@@ -334,7 +349,7 @@ def test(request): #เดียวลองวน for json_obj
     # api.sent_password(str(1))
     json_obj = api.get_data_json()
     data = json_obj["app_info"]["61340500048"]                             # update_sql
-    api.update_json('app_info', "61340500048", "action", 'return')          # update_sql 
+    api.update_json('app_info', "61340500048", "action", '')          # update_sql 
     print(data)
     # print("ssssssssssssssssssssssssssssssssssssss555")
     # for data1 in data:
