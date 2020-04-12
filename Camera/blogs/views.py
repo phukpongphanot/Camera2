@@ -49,7 +49,18 @@ def done_register(request):
 
    
 def index(request):
-    return render(request,'index.html')
+    json_obj = api.get_data_json()
+    data = json_obj["camera_info"]
+    Dis = 0
+    print("******************************************")
+    
+    for i in range(1,3):
+        s = data[str(i)]["camera_status"]
+        print(s)
+        if s == "borrow":
+            Dis += 1
+    print("******************************************")
+    return render(request,'index.html',{"Dis":Dis})
 
 
 
@@ -181,7 +192,8 @@ def scan(request):
                 print(data3)
                 print("///////////ss///////////////////////////////////444")
                 
-         
+    if Number_box == "":
+        Number_box = "FULL"
     print("xxxx"+RFID)
 
     return render(request,'scan.html',{"Number":Number_box,"RFID":RFID})

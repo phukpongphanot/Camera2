@@ -48,6 +48,22 @@
             padding-top: 0; 
             padding-bottom: 3%;
             width: 100%;} 
+        .button {
+            margin-top: auto;
+            margin-left: 75%;
+            margin-right: 0;
+            margin-bottom: 0;
+            display: inline-block;
+            background-color: black;
+            width: 25%;
+            border: none;
+            color: #FFFFFF;
+            text-align: center;
+            font-family:sm;
+            font-size:1.2vw;
+            padding: 1.5%;
+            transition: all 0.5s;
+            cursor: pointer;}
         .text{
             font-family:sm;
             font-size:1.5vw;
@@ -307,16 +323,22 @@
         <img src="{% static "img/Pin-01.png"%}" class="imgsize3"  />
         <p id="random" class="text1"></p>
         <font size="8"><h3 align = 'center'> {{random}}</h3> </font>
+        
+        
             <!-- <script>
                 var y = Math.floor(Math.random()*10).toString()+" "+Math.floor(Math.random()*10).toString()+" "+Math.floor(Math.random()*10).toString()+" "+Math.floor(Math.random()*10).toString()+" "+Math.floor(Math.random()*10).toString()+" "+Math.floor(Math.random()*10).toString();
                 document.getElementById("random").innerHTML = y;
             </script> -->
          <p id="x" class="text2"></p>
+         
          <script>
              var x = "xxxxxxxxxxxxxxxxxxx";
              document.getElementById("x").innerHTML = x;
+             
          </script>
+         <a class="button" href="index" >กลับเข้าสู่หน้าlogin <span class="sr-only"></span></a><br>
         <p class="text3">@THE CAIMAN : BORROW AND RETURN CAMERA SYSTEM FOR FIBO</p>
     </div>
+    
 </body>
 </html>
