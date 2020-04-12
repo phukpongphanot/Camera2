@@ -4,12 +4,19 @@ import json
 import datetime
 
 import sys, os
-path2jsonn = sys.path.append('C:\\Users\\User\\Desktop\\fra241\\Camera\\Api\\data.json')
+
 path2json = 'C:/Users/User/Desktop/fra241/Camera/Api/data.json'
+arduino = 'C:/Users/User/Desktop/fra241/Camera/Api/arduino.json'
 def get_data_json():
     with open(path2json, 'r', encoding="utf-8") as f:
         json_obj = json.load(f)
     return json_obj
+
+def get_data_json1():
+    with open(arduino, 'r', encoding="utf-8") as f:
+        json_obj = json.load(f)
+    return json_obj
+
 
 def get_data_sql(table_name, key, value):
     db = connect_db()
@@ -80,7 +87,7 @@ def insert_sql(table_name, value_json):
                value_json["status"], value_json["tel"], value_json["history"])
     elif table_name == 'camera_info':
         sql = "INSERT INTO `camera_info` (`CAMERA_ID`, `CAMERA_STATUS`, `CAMERA_DATA`) \
-                 VALUES ('%d', '%s', '%s')" % \
+                 VALUES ('%s', '%s', '%s')" % \
               (value_json["camera_id"], value_json["camera_status"], value_json["camera_data"])
     return sql
 

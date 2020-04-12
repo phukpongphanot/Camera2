@@ -130,6 +130,23 @@
 
             width: 100%;} 
 
+        .button {
+            margin-top: auto;
+            margin-left: 75%;
+            margin-right: 0;
+            margin-bottom: 0;
+            display: inline-block;
+            background-color: rgb(84, 81, 81);
+            width: 25%;
+            border: none;
+            color: #FFFFFF;
+            text-align: center;
+            font-family:sm;
+            font-size:1.2vw;
+            padding: 1.5%;
+            transition: all 0.5s;
+            cursor: pointer;}
+
         .text{
 
             font-family:sm;
@@ -673,39 +690,20 @@
         <img src="{% static "img/c_logo.png"%}" class="imgsize1"  />
 
         <p class="text">ยืมกล้อง : THE CAIMEN</p>
-        <h3 align = "center">Open locker {{Number}}</h3>
-        <h5 align = "center">หมายเลย RFID (สมมุติการสแกน) </h5>
-        <h5 align = "center">RFID: {{RFID}} </h5>
-        
+        <h1 align = "center">CHOOSE CAMERA {{Number}}</h1>
 
+        <p class="text2">Please scan camera ID</p><br>
         <form name = "form" action="/done_scan"  method="post"  style="text-align: center;">
             {% csrf_token %}
-            <h1 align = "center"><input type="text" name="rfid" id="rfid" class="user" required></h1>
-            <input type="submit" value="CONFIRM">
+           
+            <input type="submit" value="CONFIRM SCAN">
         </form><br>
         {% for message in messages %}
-        <h5 align = "center"><div class="alert alert-danger" role="alert">    <!--Alert (พื้นหลังแดง)-->
+        <h2 align = "center"><div class="alert alert-danger" role="alert">    <!--Alert (พื้นหลังแดง)-->
             {{message}}
-        </div></h5>
+        </div></h2>
         {% endfor %}
-
-        <!-- <label class=qrcode-text-btn>
-
-            <input  type=file 
-
-                    accept="image/*" 
-
-                    capture=environment 
-
-                    onclick="return showQRIntro();" 
-
-                    onchange="openQRCamera(this);" 
-
-                    tabindex=-1>
-
-        </label>  -->
-
-        <p class="text2">Please scan camera ID</p>
+        <a class="button" href="enter" >กลับเข้าสู่หน้า Enter code <span class="sr-only"></span></a>
 
         <p class="text3">@THE CAIMAN : BORROW AND RETURN CAMERA SYSTEM FOR FIBO</p>
 
