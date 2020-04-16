@@ -13,6 +13,39 @@ from Api import api
 
 
 
+g = ""
+sendata = serial.Serial('COM3', 9600)
+connect = False
+
+while not connect:
+    a = sendata.read()
+    print(a)
+    connect = True
+print("Ready")
+
+def led_on1():
+    sendata.write("A".encode())
+    print("Led_On")  
+    # print(sendata.read())
+
+def led_on2():
+    sendata.write("B".encode())
+    print("Led_On")  
+    # print(sendata.read())
+
+def led_off1():
+    sendata.write("C".encode())
+    print("Led_Off")
+    print(sendata.read())
+
+def led_off2():
+    sendata.write("D".encode())
+    print("Led_Off")
+    print(sendata.read())
+
+
+
+
 def connect_db():
     con = pymysql.connect(host='localhost',
                           user='root',
@@ -20,8 +53,7 @@ def connect_db():
                           db='pj_camera')
     return con
 
-
-
+ 
 
 def register(request):
     return render(request,'register.html')
@@ -34,8 +66,7 @@ def addregister(request):
     Password = request.POST['password']
     RePassword = request.POST['confirm_password']
     para_register = [StudentID,FirstName,LastName,Number,Password]
-    print("llllllllllllllllllllllllllllllllllllll22233")
-    print( para_register)
+    
     
     if not api.get_data_sql('user_info', "ID", StudentID):
         api.register_user(para_register)
@@ -53,14 +84,13 @@ def index(request):
     json_obj = api.get_data_json()
     data = json_obj["camera_info"]
     Dis = 0
-    print("******************************************")
     
     for i in range(1,3):
         s = data[str(i)]["camera_status"]
-        print(s)
+        
         if s == "borrow":
             Dis += 1
-    print("******************************************")
+    
     return render(request,'index.html',{"Dis":Dis})
 
 
@@ -68,22 +98,10 @@ def index(request):
 def indext_check(request):
     StudentID = request.POST['id']
     Password = request.POST['pw']
-    # json_obj = api.get_data_json()
-    # data = json_obj["user_info"][StudentID]
-    print(StudentID)
-    print(Password)
-
+    
     check = api.get_data_sql("user_info", "id", StudentID)
-    print("////////////////////")
-    # print(check[0])
     check1 = api.get_data_sql1("user_info")
-    for i in check1:
-        print(i[0])
-    # print(Password)
-    # print(check[0][3])
-    print("////////////////////")
-   
-
+    
     for i in check1:
         if i[0] ==  StudentID:
             
@@ -106,11 +124,9 @@ def select(request):
 
 
 def borrow(request):
-    print("bbbbbbbbbbbbbbbbbbbbbb")
-    print("print")
+    
     json_obj = api.get_data_json()
     data = json_obj["user_info"]["1"]["id"]
-    print(type(data)) 
     ran = api.sent_password(str(data))
     return render(request,'borrow.html',{"random":ran})
 
@@ -119,9 +135,6 @@ def Return(request):
     json_obj = api.get_data_json()
     data = json_obj["user_info"]["1"]["id"]
     data1 = json_obj["app_info"][str(data)]["action"]
-    print("*****************")
-    print((data)) 
-    print("*************************")
     if data1 == "borrow":
         ran = api.sent_password(str(data))
     else:
@@ -154,17 +167,12 @@ def enter_b(request):
     data3 = json_obj["app_info"][str(data1)]["action"]
    
     for data1 in data:
-        print(data1)
-        print("//////////////////////////////////////")
-        
+    
         data2 = json_obj["app_info"][data1]["random_key"]
-        print(data2)
-        print("############################################################3")
+        
         if str(data2) == str(key):
-            print("key ="+str(data2))
-            print("//////////////////////////"+" "+str(data2))
+            
             if str(data3) == "":
-                print("passssssssssssssssssssssssssssssssssssssssss")
                 return redirect('/scan')
             if str(data3) == "borrow":
                 return redirect('/scan_return')
@@ -184,7 +192,7 @@ def scan(request):
     data = json_obj["camera_info"]
     data1 = json_obj["user_info"]["1"]["id"]
     data4 = json_obj["app_info"][str(data1)]
-    print("zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz")
+
     Number_box = ""
     RFID = ""
     
@@ -198,16 +206,7 @@ def scan(request):
                 RFID =  str(data3)
                 
                 Number_box = scan1
-                # api.update_json("camera_info", str(scan1), "camera_status", "borrow")
-                # api.update_json("camera_info", str(scan1), "camera_data", date)
-                # api.update_json("app_info", str(data1), "action", "borrow")
-                # api.update_json("app_info", str(data1), "camera_id",data3)
-                # api.update_json("app_info", str(data1), "datetime",date)
-                
-                        
-    # if Number_box == "":
-    #     Number_box = "FULL"
-    # print("xxxx"+RFID)
+              
 
     return render(request,'scan.html',{"Number":Number_box,"RFID":RFID})
 
@@ -221,18 +220,46 @@ def done_scan(request):
     data = json_obj["camera_info"]
     data1 = json_obj["user_info"]["1"]["id"]
     data4 = json_obj["app_info"][str(data1)]["camera_id"]
+
+    print("********  Wait RFID   *************")
+    con = False
+    G = ""
+    g = ""
+    while not con:
+        G = str(sendata.readline())
+        for i in G:
+            # print(i)
+            if i.isdigit():
+                g = G
+                break
+            else:
+                g = ""
+        if g != "":
+            # print(g)
+            con = True
+
+    g = g[2:-5]
+    print(g)
+
     
     for scan1 in data:
         data2 = json_obj["camera_info"][scan1]["camera_status"]
         if data2 == "":
                 data3 = json_obj["camera_info"][scan1]["camera_id"]
-                if data3 == arduino:
+                # if data3 == arduino:
+                if data3 == g:
                     api.update_json("camera_info", str(scan1), "camera_status", "borrow")
                     api.update_json("camera_info", str(scan1), "camera_data", date)
                     api.update_json("app_info", str(data1), "action", "borrow")
                     api.update_json("app_info", str(data1), "camera_id",data3)
                     api.update_json("app_info", str(data1), "datetime",date)
+                    
+                    if g == "185:75:154:153:241":
+                        led_on1()
+                    elif g == "172:72:101:163:34":
+                        led_on2()
                     return redirect('/complete_borrow')
+
     
     
     messages.info(request,'***scan please***') 
@@ -246,10 +273,8 @@ def complete_borrow(request):
     data4 = json_obj["app_info"][str(data1)]
     
     data5 = json_obj["app_info"][str(data1)]["camera_id"]
-    # data6 = json_obj["camera_info"][str(data5)]
-    print("----------------------------------")
-    print(data5)
-    print("----------------------------------")
+    
+
     db = connect_db()
     cursor = db.cursor()
     for check in data:
@@ -258,7 +283,7 @@ def complete_borrow(request):
         if data2 == "borrow":
             cursor.execute(api.insert_sql("app_info", data4))
             cursor.execute(api.insert_sql("camera_info", data6))
-    # cursor.execute(api.update_sql("camera_info", "camera_status", 1))
+   
     db.commit()
     db.close()
     return render(request,'complete_borrow.html',{"user":data1,"id_camera":data5})
@@ -282,16 +307,41 @@ def done_scan_return(request):
     data5 = json_obj["app_info"][str(data1)]["camera_id"]
     data7 = json_obj["app_info"]["61340500048"] 
     data4 = json_obj["app_info"][str(data1)]["camera_id"]
+
+    print("********  Wait RFID   *************")
+    con = False
+    G = ""
+    g = ""
+    while not con:
+        G = str(sendata.readline())
+        for i in G:
+            # print(i)
+            if i.isdigit():
+                g = G
+                break
+            else:
+                g = ""
+        if g != "":
+            # print(g)
+            con = True
+
+    g = g[2:-5]
+    print(g)
+
     
     
     for scan1 in data:
         data3 = json_obj["camera_info"][scan1]["camera_id"]
-        if arduino == data5:
+        # if arduino == data5:
+        if g == data5 == data3:
             api.update_json("camera_info", str(scan1), "camera_status", "return")
             api.update_json("camera_info", str(scan1), "camera_data", date)
             api.update_json("app_info", str(data1), "action", "return")
-            # api.update_json("app_info", str(data1), "camera_id","")
             api.update_json("app_info", str(data1), "datetime",date)
+            if g == "185:75:154:153:241":
+                led_off1() 
+            elif g == "172:72:101:163:34":
+                led_off2()
             return redirect('/complete_return')
 
     messages.info(request,'รหัสไม่ถูกต้อง') 
@@ -313,7 +363,6 @@ def complete_return(request):
     data7 = json_obj["app_info"]["61340500048"]  
     data6 = json_obj["app_info"][str(data1)]
    
-    print("----------------------------------")
     db = connect_db()
     cursor = db.cursor()
     cursor.execute(api.insert_sql("app_info", data6))
@@ -321,7 +370,7 @@ def complete_return(request):
         
         s = data[str(i)]
         
-        if arduino == str(data6["camera_id"]) == s["camera_id"]:
+        if str(data6["camera_id"]) == s["camera_id"]:
             
             print(s)
             cursor.execute(api.insert_sql("camera_info", s))
@@ -331,17 +380,9 @@ def complete_return(request):
     db.close()
     api.update_json("app_info", str(data1), "action", "")
     api.update_json("app_info", str(data1), "camera_id","")
-    
     api.update_json("app_info", str(data1), "datetime","")
     
-    
-
     return render(request,'complete_return.html',{"user":data1,"date":date})
-
-
-
-
-
 
 
 def test(request): 
